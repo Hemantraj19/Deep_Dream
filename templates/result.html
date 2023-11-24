@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Result</h1>
+    <img src="data:image/png;base64,{{image_base64}}" id="downloadImage" />
+    <br>
+    <button onclick="downloadImage()">Download Image</button>
+
+    <script>
+      function downloadImage() {
+        // Get the image data
+        var imageData = document.getElementById("downloadImage").src;
+
+        // Create a link element
+        var link = document.createElement("a");
+
+        // Set the href attribute with the image data
+        link.href = imageData;
+
+        // Set the download attribute with a desired filename
+        link.download = "deep_dream.png";
+
+        // Append the link to the body
+        document.body.appendChild(link);
+
+        // Trigger a click on the link element
+        link.click();
+
+        // Remove the link from the body
+        document.body.removeChild(link);
+      }
+    </script>
+  </body>
+</html>
